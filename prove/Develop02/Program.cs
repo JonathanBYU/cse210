@@ -27,42 +27,12 @@ class Program {
         journal.AddEntry(newEntry);
     }
 
-    static void DisplayJournal(Journal journal) {
-        for (int i = 0; i < journal.entries.Count; i++) {
-            Console.WriteLine(journal.entries[i].ToString());
-        }
-    }
-
-    static void SaveJournal(Journal journal) {
-        Console.WriteLine("What do you want to name the file? ");
-        string fileName = Console.ReadLine();
-        using (StreamWriter writer = new StreamWriter(fileName)) {
-            for (int i = 0; i < journal.entries.Count; i++) {
-                writer.WriteLine(journal.entries[i].ToString());
-            }
-        }
-    }
- 
-    static Journal LoadJournal() {
-        Journal journal = new Journal();
-        Console.WriteLine("What file would you like to load? ");
-        string fileName = Console.ReadLine();
-        foreach (string line in File.ReadLines(fileName)) {
-            string[] list = line.Split('#');
-            var (date, prompt, response) = (list[0], list[1], list[2]);
-            Entry entry = new Entry(date, prompt, response);
-            journal.AddEntry(entry);
-        }
-        return journal;
-    }
-
     static void Exit() {
         Console.WriteLine("Exiting the program...");
         Environment.Exit(0);
     }
 
-    static void Main(string[] args)
-    {
+    static void Main(string[] args) {
         Console.WriteLine("Welcome to the Journal Program!");
         Journal journal = new Journal();
         bool running = true;
@@ -73,11 +43,15 @@ class Program {
             if (input == "1") {
                 WriteEntry(journal);
             } else if (input == "2") {
-                DisplayJournal(journal);
+                journal.Display();
             } else if (input == "3") {
-                SaveJournal(journal);
+                Console.WriteLine("What do you want to name the file (Omit file extension)? ");
+                string fileName = Console.ReadLine();
+                journal.WriteToFile(fileName);
             } else if (input == "4") {
-                journal = LoadJournal();
+                Console.WriteLine("What file would you like to load (Omit file extension)? ");
+                string fileName = Console.ReadLine();
+                journal.ReadFromFile(fileName);
             } else if (input == "5") {
                 Exit();
             }

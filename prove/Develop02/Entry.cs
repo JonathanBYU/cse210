@@ -2,9 +2,10 @@ using System;
 
 class Entry
 {
-    string _date;
-    string _question;
-    string _entry;
+    // I declared these in this way to be json serializable
+    public string _date { get; set; }
+    public string _question { get; set; }
+    public string _entry { get; set; }
 
 
     public Entry(string date, string question, string entryText) {
@@ -12,6 +13,9 @@ class Entry
         _question = question;
         _entry = entryText;
     }
+
+    // Parameterless construtor required for deserialization
+    public Entry() {}
 
     public override string ToString() {
         string outputString = "";
