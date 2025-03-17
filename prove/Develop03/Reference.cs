@@ -20,6 +20,10 @@ class Reference {
     }
 
     public string GetFormattedReference() {
-        return $"{_book} {_chapter}:{_startVerse}";
+        if (_endVerse != null) {
+            return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
+        } else {
+            return $"{_book} {_chapter}:{_startVerse}";
+        }
     }
 }
