@@ -6,7 +6,15 @@ class PoliceMan : Person {
         _weapons = weapons;
     }
 
-    public string DisplayPoliceManInfo() {
-        return $"{_weapons}, Info: {DisplayPersonInfo()}";
+    public string GetPoliceManInfo() {
+        return $"{_weapons}, Info: {GetPersonInfo()}";
+    }
+
+    public override string GetName() {
+        return $"Captain {base.GetName()}";
+    }
+
+    public override string GetHobbies() {
+        return "Running";
     }
 }

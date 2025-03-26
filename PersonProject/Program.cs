@@ -1,19 +1,18 @@
 ﻿// See https://aka.ms/new-console-template for more information
+// Virtual has a default, abstract doesn't have a default
 class Program {
     public static void Main(string[] args) {
-        Person myPerson = new Person("Bob", "Bubba", 97);
-        
-        Console.WriteLine($"{myPerson.DisplayPersonInfo()}");
-
         PoliceMan myPoliceMan = new PoliceMan("Taser", "Joe", "Mama", 32);
 
-        Console.WriteLine($"{myPoliceMan.DisplayPoliceManInfo()}");
+        Console.WriteLine($"{myPoliceMan.GetPoliceManInfo()}");
 
         Doctor myDoctor = new Doctor("Bandage", "Henry", "Smith", 40);
-        Console.WriteLine($"{myDoctor.DisplayDoctorInfo()}");
+        Console.WriteLine($"{myDoctor.GetName()}");
+        Console.WriteLine($"{myDoctor.GetHobbies()}");
 
         myPoliceMan.SetHeight(73);
         Console.WriteLine($"Police Man Height: {myPoliceMan.GetHeight()} inches");
-
+        Console.WriteLine($"{myPoliceMan.GetName()}");
+        Console.WriteLine($"{myPoliceMan.GetHobbies()}");
     }
 }

@@ -1,4 +1,4 @@
-class Person {
+abstract class Person {
     private string _firstName;
     private string _lastName;
     private int _age;
@@ -11,7 +11,7 @@ class Person {
         _height = 0;
     }
 
-    public string DisplayPersonInfo() {
+    public string GetPersonInfo() {
         return $"Information: {_firstName} {_lastName} {_age}";
     }
 
@@ -22,4 +22,10 @@ class Person {
     public void SetHeight(int height) {
         _height = height;
     }
+
+    public virtual string GetName() {
+        return $"{_firstName} {_lastName}";
+    }
+
+    public abstract string GetHobbies();
 }
