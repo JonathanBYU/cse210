@@ -36,6 +36,7 @@ class Program
 
     static void Main(string[] args) {
         bool running = true;
+        int activities = 0;
         while (running) {
             DisplayMenu();
             string input = Console.ReadLine();
@@ -63,12 +64,13 @@ class Program
                 activity.SetDuration(duration);
                 Console.Clear();
 
-                Console.WriteLine("Get Ready...");
+                Console.WriteLine("Get Ready...\n");
                 WaitAnimation(5);
 
                 activity.RunActivity(duration);
                 
-                Console.WriteLine("Well done!!");
+                activities += 1;
+                Console.WriteLine($"Well done!! You have now performed {activities} activites!");
                 WaitAnimation(5);
                 Console.WriteLine(activity.GetEndMessage());
                 WaitAnimation(5);

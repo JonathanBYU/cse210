@@ -1,8 +1,8 @@
 using System;
 
 abstract class Activity {
-    protected abstract string Name { get; }
-    protected abstract string Description { get; }
+    protected abstract string _name { get; }
+    protected abstract string _description { get; }
     private int _duration;
     
     public abstract void RunActivity(int duration);
@@ -12,10 +12,10 @@ abstract class Activity {
     }
 
     public string GetStartMessage() {
-        return $"Welcome to the {Name} Activity.\n\n{Description}";
+        return $"Welcome to the {_name} Activity.\n\n{_description}";
     }
 
     public string GetEndMessage() {
-        return $"You have completed another {_duration} seconds of the {Name} Activity.";
+        return $"You have completed another {_duration} seconds of the {_name} Activity.";
     }
 }

@@ -1,15 +1,16 @@
 using System;
+using System.Collections.Generic;
 
 class Reflection : Activity {
-    protected override string Name => "Reflection";
-    protected override string Description => "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
-    List<string> _prompts = new List<string>{ 
+    protected override string _name => "Reflection";
+    protected override string _description => "This activity will help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.";
+    private List<string> _prompts = new List<string>{ 
         "Think of a time when you stood up for someone else.", 
         "Think of a time when you did something really difficult.",
         "Think of a time when you helped someone in need.",
         "Think of a time when you did something truly selfless.",
     };
-    List<string> _reflectQuestions = new List<string>{ 
+    private List<string> _reflectQuestions = new List<string>{ 
         "Why was this experience meaningful to you?",
         "Have you ever done anything like this before?",
         "How did you get started?",
@@ -22,22 +23,33 @@ class Reflection : Activity {
     };
 
     public override void RunActivity(int duration) {
+        Random random = new Random();
+        Console.WriteLine("Consider the following prompt:");
+        int index = random.Next(_prompts.Count);
+        string randomPrompt = _prompts[index];
+        Console.WriteLine($"\n --- {randomPrompt} ---");
+        Console.WriteLine("\nWhen you have something in mind, press enter to continue.");
+        string next = Console.ReadLine();
+        Console.WriteLine("Now ponder on each of the following questions as they related to this experience.");
+        Console.Write("You may begin in: ");
+        for (int i = 5; i > 0; i--) {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
+        Console.Clear();
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
-
         while (DateTime.Now < endTime) {
-            Console.WriteLine("\nBreathe in...");
-            for (int i = 4; i > 0; i--) {
-                Console.Write(i);
-                Console.Write("\b \b");
-                Thread.Sleep(1000);
-            }
-            Console.WriteLine("Now breathe out...");
-            for (int i = 6; i > 0; i--) {
-                Console.Write(i);
+            int questionIndex = random.Next(_reflectQuestions.Count);
+            string randomQuestion = _reflectQuestions[questionIndex];
+            Console.Write($"> {randomQuestion} ");
+            for (int count = 5; count > 0; count--) {
+                Console.Write(count);
                 Thread.Sleep(1000);
                 Console.Write("\b \b");
             }
+            Console.WriteLine();
         }
     }
 }

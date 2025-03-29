@@ -1,8 +1,8 @@
 using System;
 
 class Breathing : Activity {
-    protected override string Name => "Breathing";
-    protected override string Description => "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
+    protected override string _name => "Breathing";
+    protected override string _description => "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
     
     private List<string> _messages = new List<string>{ "Breathe in...", "Breathe out..." };
 
@@ -11,7 +11,7 @@ class Breathing : Activity {
         DateTime endTime = startTime.AddSeconds(duration);
 
         while (DateTime.Now < endTime) {
-            Console.WriteLine("\nBreathe in...");
+            Console.WriteLine("Breathe in...");
             for (int i = 4; i > 0; i--) {
                 Console.Write(i);
                 Thread.Sleep(1000);
